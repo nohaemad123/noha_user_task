@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+@use '@angular/material' as mat;
+
+@import "tailwindcss";
+
+.mat-form-field {
+    margin: 0 !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
+    padding-bottom: 0 !important;
+}
+
+.mat-form-field-infix {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+.mat-mdc-form-field-subscript-wrapper {
+    display: none;
+}

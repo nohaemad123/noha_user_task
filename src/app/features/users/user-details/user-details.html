@@ -1,0 +1,336 @@
+<div class="bg-gray-100">
+    <div class="w-full mx-auto px-2 lg:px-3 lg:max-w-screen-xl py-6 ">
+        <ng-container *ngIf="user$ | async as user; else loading">
+            <div class="container mx-auto">
+                <div
+                    class="bg-white shadow-md rounded-xl p-6 flex items-center gap-6   hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <img [src]="user.image" class="w-32 h-32 rounded-full border-2 border-indigo-300 object-cover"
+                        alt="user" />
+
+
+                    <div class="flex-1">
+                        <div class="flex items-center gap-4 mt-2 text-sm text-gray-600">
+                            <h2 class="text-2xl font-bold text-gray-800">
+                                {{ user.firstName }} {{user.maidenName}} {{ user.lastName }}
+                            </h2>
+
+                            <span class="bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full font-medium">
+                                User ID: {{ user.id }}
+                            </span>
+                        </div>
+
+                        <div class="flex items-center gap-4 mt-2 text-sm text-gray-600">
+
+                            <span
+                                class="bg-green-50 text-green-600 px-3 py-1 flex items-center gap-1 rounded-full font-medium">
+                                <mat-icon class="text-base text-gray-500">person</mat-icon>
+
+                                {{ user.role }}</span>
+
+
+                            <span class="flex items-center gap-1">
+                                <mat-icon class="text-base text-gray-500">phone</mat-icon>
+                                {{ user.phone }}
+                            </span>
+                            <span class="flex items-center gap-1">
+                                <mat-icon class="text-base text-gray-500">email</mat-icon>
+                                {{ user.email }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-2">
+                        <button mat-stroked-button color="primary" (click)="goBack()">
+                            Back
+                        </button>
+
+                    </div>
+                </div>
+
+
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div
+                        class="bg-white shadow-md rounded-xl p-6   hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <h2 class="text-xl font-semibold text-gray-700 mb-4 w-full border-b border-gray-300 pb-2">
+                            Personal
+                            Info</h2>
+                        <div class="grid grid-cols-2 gap-y-4 gap-x-6">
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">Age:</span>
+                                <span class="text-gray-700 text-md"> {{ user.age }}</span>
+                            </p>
+
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">Phone:</span>
+                                <span class="text-gray-700 text-md">{{ user.phone }}</span>
+
+                            </p>
+
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">gender:</span>
+                                <span class="text-gray-700 text-md">{{ user.gender }}</span>
+
+                            </p>
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">Birth of data:</span>
+                                <span class="text-gray-700 text-md">{{ user.birthDate }}</span>
+
+                            </p>
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">Blood group:</span>
+                                <span class="text-gray-700 text-md">{{ user.bloodGroup }}</span>
+
+                            </p>
+                        </div>
+                        <p class="flex flex-col gap-y-2 mt-4">
+                            <span class="font-semibold text-lg">University:</span>
+                            <span class="text-gray-700 text-md">{{ user.university }}</span>
+
+                        </p>
+                    </div>
+
+
+                    <div
+                        class="bg-white shadow-md rounded-lg p-6   hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <h2 class="text-xl font-semibold text-gray-700 mb-4 w-full border-b border-gray-300 pb-2">
+                            Personal
+                            attributes</h2>
+                        <div class="grid grid-cols-2 gap-y-4 gap-x-6">
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">Height:</span>
+                                <span class="text-gray-700 text-md"> {{ user.height }} cm</span>
+                            </p>
+
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">Weight:</span>
+                                <span class="text-gray-700 text-md">{{ user.weight }} Kg</span>
+
+                            </p>
+
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">Eye color:</span>
+                                <span class="text-gray-700 text-md">{{ user.eyeColor }}</span>
+
+                            </p>
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">Hair:</span>
+                                <span class="text-gray-700 text-md">{{ user.hair?.color }} {{ user.hair?.type }}</span>
+
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-white shadow-md rounded-lg p-6   hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <h2 class="text-xl font-semibold text-gray-700 mb-4 w-full border-b border-gray-300 pb-2">
+                            Address information</h2>
+                        <div class="grid grid-cols-2 gap-y-4 gap-x-6">
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">Country:</span>
+                                <span class="text-gray-700 text-md"> {{ user.address.country }}</span>
+                            </p>
+
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">City:</span>
+                                <span class="text-gray-700 text-md">{{ user.address.city }}</span>
+
+                            </p>
+
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">State:</span>
+                                <span class="text-gray-700 text-md">{{ user.address.state }}</span>
+
+                            </p>
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">State Code:</span>
+                                <span class="text-gray-700 text-md">{{ user.address?.stateCode }}</span>
+
+                            </p>
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">Postal Code:</span>
+                                <span class="text-gray-700 text-md">{{ user.address?.postalCode }}</span>
+
+                            </p>
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">address latitiude:</span>
+                                <span class="text-gray-700 text-md">{{ user.address.coordinates?.lat }}</span>
+
+                            </p>
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">Address longitude:</span>
+                                <span class="text-gray-700 text-md">{{ user.address?.coordinates?.lng }}</span>
+
+                            </p>
+                        </div>
+                        <p class="flex flex-col gap-y-2 mt-4">
+                            <span class="font-semibold text-lg">Address:</span>
+                            <span class="text-gray-700 text-md">{{ user.address?.address }}</span>
+
+                        </p>
+                    </div>
+                    <div
+                        class="bg-white shadow-md rounded-lg p-6   hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <h2 class="text-xl font-semibold text-gray-700 mb-4 w-full border-b border-gray-300 pb-2">
+                            Employment information</h2>
+                        <div class="grid grid-cols-2 gap-y-4 gap-x-6">
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">Company name:</span>
+                                <span class="text-gray-700 text-md"> {{ user.company?.name }}</span>
+                            </p>
+
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">Department:</span>
+                                <span class="text-gray-700 text-md">{{ user.company?.department }}</span>
+
+                            </p>
+
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">Job title:</span>
+                                <span class="text-gray-700 text-md">{{ user.company?.title }}</span>
+
+                            </p>
+
+                        </div>
+
+                        <h2
+                            class="text-xl font-semibold text-gray-700 mb-4 w-full border-t mt-4 pt-2 border-b border-gray-300 pb-2">
+                            Company address</h2>
+
+                        <div class="grid grid-cols-2 gap-y-4 gap-x-6">
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">Country:</span>
+                                <span class="text-gray-700 text-md"> {{ user.company?.address?.country }}</span>
+                            </p>
+
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">City:</span>
+                                <span class="text-gray-700 text-md">{{ user.company?.address?.city }}</span>
+
+                            </p>
+
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">State:</span>
+                                <span class="text-gray-700 text-md">{{ user.company?.address?.state }}</span>
+
+                            </p>
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">State Code:</span>
+                                <span class="text-gray-700 text-md">{{ user.company?.address?.stateCode }}</span>
+
+                            </p>
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">Postal Code:</span>
+                                <span class="text-gray-700 text-md">{{ user.company?.address?.postalCode }}</span>
+
+                            </p>
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">address latitiude:</span>
+                                <span class="text-gray-700 text-md">{{ user.company?.address?.coordinates?.lat }}</span>
+
+                            </p>
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">Address longitude:</span>
+                                <span class="text-gray-700 text-md">{{ user.company?.address?.coordinates?.lng }}</span>
+
+                            </p>
+                        </div>
+                        <p class="flex flex-col gap-y-2 mt-4">
+                            <span class="font-semibold text-lg">Address:</span>
+                            <span class="text-gray-700 text-md">{{ user.company?.address?.address }}</span>
+
+                        </p>
+                    </div>
+
+                    <div class="bg-white shadow-md rounded-lg p-6   hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                        *ngIf="user.role==='admin'">
+                        <h2 class="text-xl font-semibold text-gray-700 mb-4 w-full border-b border-gray-300 pb-2">
+                            Financial information</h2>
+                        <div class="grid grid-cols-2 gap-y-4 gap-x-6">
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">Card number:</span>
+                                <span class="text-gray-700 text-md"> {{ user.bank?.cardNumber }}</span>
+                            </p>
+
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">Card type:</span>
+                                <span class="text-gray-700 text-md">{{ user.bank?.cardType }}</span>
+
+                            </p>
+
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">Card expire:</span>
+                                <span class="text-gray-700 text-md">{{ user.bank?.cardExpire }}</span>
+
+                            </p>
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">Currency:</span>
+                                <span class="text-gray-700 text-md">{{ user.bank?.currency }}</span>
+
+                            </p>
+
+                        </div>
+                        <p class="flex flex-col gap-y-2 mt-4">
+                            <span class="font-semibold text-lg">Iban:</span>
+                            <span class="text-gray-700 text-md">{{ user.bank?.iban }}</span>
+
+                        </p>
+                    </div>
+                    <div class="bg-white shadow-md rounded-lg p-6   hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                        *ngIf="user.role==='admin'">
+                        <h2 class="text-xl font-semibold text-gray-700 mb-4 w-full border-b border-gray-300 pb-2">
+                            Technical information</h2>
+                        <div class="grid grid-cols-2 gap-y-4 gap-x-6">
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">Ip:</span>
+                                <span class="text-gray-700 text-md"> {{ user.ip }}</span>
+                            </p>
+
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">Mac address:</span>
+                                <span class="text-gray-700 text-md">{{ user.macAddress }}</span>
+
+                            </p>
+                        </div>
+                        <p class="flex flex-col gap-y-2 mt-4">
+                            <span class="font-semibold text-lg">User agent:</span>
+                            <span class="text-gray-700 text-md">{{ user.userAgent }}</span>
+
+                        </p>
+                    </div>
+                    <div class="bg-white shadow-md rounded-lg p-6   hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                        *ngIf="user.role==='admin'">
+                        <h2 class="text-xl font-semibold text-gray-700 mb-4 w-full border-b border-gray-300 pb-2">
+                            Crypto information</h2>
+                        <div class="grid grid-cols-2 gap-y-4 gap-x-6">
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">Coin:</span>
+                                <span class="text-gray-700 text-md"> {{ user.crypto?.coin }}</span>
+                            </p>
+
+                            <p class="flex flex-col gap-y-2">
+                                <span class="font-semibold text-lg">Network:</span>
+                                <span class="text-gray-700 text-md">{{ user.crypto?.network }}</span>
+
+                            </p>
+                        </div>
+                        <p class="flex flex-col gap-y-2 mt-4">
+                            <span class="font-semibold text-lg">Wallet:</span>
+                            <span class="text-gray-700 text-md">{{ user.crypto?.wallet }}</span>
+
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </ng-container>
+
+        <ng-template #loading>
+            <div class="w-full mx-auto px-2 lg:px-3 lg:max-w-screen-xl py-6 ">
+                <div class="flex justify-center items-center h-full">
+                    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>
